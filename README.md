@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# CodeStreak - Challenge Tracker  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CodeStreak is a web-based application that helps students track and complete challenges, including but not limited to DSA (Data Structures & Algorithms). Students can set their own goals (like DSA, coding practice, or any other learning task), track progress day by day, and extend their challenge beyond 21 days if they wish.  
 
-## Available Scripts
+# Live Demo  
+🔗 [View Deployed Project]https://codestreak-z551.vercel.app/
 
-In the project directory, you can run:
+# Features  
+- Add daily tasks with a timer and mark them as completed.  
+- Students can track **any type of goal**, not just DSA.  
+- Color-coded grid for scheduled, completed, and upcoming tasks.  
+- Option to **extend the challenge** to more than 21 days.  
+- Pop-ups with success and failure notifications.  
+- If tasks are related to **DSA topics**, students receive recommended next topics and direct practice links (Easy, Medium, Hard).  
+- For non-DSA goals, recommendations and practice links will not be shown.  
+- Task history with dates and search functionality. 
+- Student can also **Restart** the challenge which will clear all their saved tasks and everything will continue from start. 
+- Fully responsive design for mobile, tablet, and desktop.  
 
-### `npm start`
+# Tech Stack  
+- **React.js**  
+- **JavaScript (ES6)**  
+- **HTML (JSX in React)**  
+- **CSS**  
+- **LocalStorage** (to save user data on the device)  
+- **SweetAlert2** (pop-ups)  
+- **Vercel** (deployment)  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# How It Works  
+1. Enter your **name** and **goal** when starting.  
+2. Add daily tasks by selecting a day and setting a topic with a timer.  
+3. You can pause, resume, or complete tasks anytime.  
+4. Mark tasks as completed to track progress and, for DSA tasks, view recommended next topics.  
+5. Extend your challenge if you want to continue beyond 21 days.  
+6. View your entire history with search and dates.  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Screenshots  
 
-### `npm test`
+1. **Home Page**  
+   ![Home Page](screenshots/Home.png)  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Tasks Grid**  
+   ![Tasks Grid](screenshots/TaskGrid.png)  
 
-### `npm run build`
+3. **Recommendation And Practice (DSA only)**  
+   ![Recommendation And Practice](screenshots/RecommendationAndPractice.png)  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **History Page**  
+   ![History](screenshots/history.png) 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. **SearchInHistory Page**  
+   ![History](screenshots/SearchInHistory.png)  
+   
+6. **ExtendDays Page**  
+   ![History](screenshots/ExtendDays.png) 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7. **Restart Page**  
+   ![History](screenshots/Restart.png)
 
-### `npm run eject`
+# Installation  
+1. Clone the repository:  
+   ```bash
+-  git clone https://github.com/Kanikaekcoshiya/codestreak.git
+ 
+ 2. Install dependencies and start the project:
+- npm install  
+- npm start  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Build for production:
+-npm run build  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Deployment
+- The app is deployed using Vercel.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Every push to the main branch will automatically deploy the latest version.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Data Privacy Note
+- All user data (name, tasks, and history) is stored in the browser's LocalStorage.
 
-## Learn More
+- This data stays only on the user’s device and cannot be viewed by others.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# License
+This project is for educational purposes only.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Contact:
+Made by Kanika Ekcoshiya 
+Email: kanikaekcoshiya@gmail.com
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
