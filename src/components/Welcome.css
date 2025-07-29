@@ -1,0 +1,34 @@
+.welcome-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 320px;
+}
+
+.welcome-box h1 {
+  margin-bottom: 20px;
+}
+
+.welcome-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.welcome-box input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.welcome-box button {
+  background: #6d5dfc;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

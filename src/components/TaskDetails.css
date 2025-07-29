@@ -1,0 +1,44 @@
+.task-details-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  width: 80%;
+  margin: 20px auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.btn-complete {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-schedule {
+  background: #2196f3;
+  color: white;
+}
+
+.btn-pause {
+  background: #ff9800;
+  color: white;
+}
+
+.btn-close {
+  background: #e53935;
+  color: white;
+}
+
+button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}

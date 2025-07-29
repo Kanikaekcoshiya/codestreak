@@ -1,0 +1,46 @@
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 60px);
+  gap: 15px;
+}
+
+.day-box {
+  width: 60px;
+  height: 60px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.day-box:hover {
+  transform: scale(1.1);
+}
+
+.day-box.upcoming {
+  background: #ddd;
+  color: #000;
+}
+
+.day-box.scheduled {
+  background: #f7d879;
+  color: #000;
+}
+
+.day-box.completed {
+  background: #4caf50;
+  color: #fff;
+}
+
+.day-box.dark {
+  background: #444;
+  color: #fff;
+}
