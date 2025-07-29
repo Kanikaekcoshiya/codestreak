@@ -21,6 +21,9 @@ function Welcome({ setName, setGoal }) {
   return (
     <div className="welcome-box">
       <h2>Welcome to CodeStreak</h2>
+      <p>
+        Track and practice Your DSA progress 
+      </p>
       <input
         type="text"
         placeholder="Enter your name"
