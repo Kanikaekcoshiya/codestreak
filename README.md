@@ -19,7 +19,7 @@ CodeStreak is a web-based application that helps students track and complete cha
 
 # Tech Stack  
 - **React.js**  
-- **JavaScript (ES6)**  
+- **JavaScript **  
 - **HTML (JSX in React)**  
 - **CSS**  
 - **LocalStorage** (to save user data on the device)  
