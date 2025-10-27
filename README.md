@@ -45,16 +45,13 @@ CodeStreak is a web-based application that helps students track and complete cha
 3. **Recommendation And Practice (DSA only)**  
    ![Recommendation And Practice](screenshots/RecommendationAndPractice.png)  
 
-4. **History Page**  
-   ![History](screenshots/history.png) 
-
-5. **SearchInHistory Page**  
+4. **SearchInHistory Page**  
    ![History](screenshots/SearchInHistory.png)  
    
-6. **ExtendDays Page**  
+5. **ExtendDays Page**  
    ![History](screenshots/ExtendDays.png) 
 
-7. **Restart Page**  
+6. **Restart Page**  
    ![History](screenshots/Restart.png)
 
 ## Installation
@@ -85,6 +82,6 @@ This project is for educational purposes only.
 
 # Contact:
 Made by Kanika Ekcoshiya 
-Email: kanikaekcoshiya@gmail.com
+Email: kanikab1619@gmail.com
 
 
