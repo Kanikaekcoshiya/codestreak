@@ -19,7 +19,7 @@ CodeStreak is a web-based application that helps students track and complete cha
 
 # Tech Stack  
 - **React.js**  
-- **JavaScript **  
+- **JavaScript** 
 - **HTML (JSX in React)**  
 - **CSS**  
 - **LocalStorage** (to save user data on the device)  
@@ -57,12 +57,13 @@ CodeStreak is a web-based application that helps students track and complete cha
 7. **Restart Page**  
    ![History](screenshots/Restart.png)
 
-# Installation  
-1. Clone the repository:  
+## Installation
+
+1. Clone the repository:
+
    ```bash
--  git clone https://github.com/Kanikaekcoshiya/codestreak.git
- 
- 2. Install dependencies and start the project:
+   git clone https://github.com/Kanikaekcoshiya/codestreak.git
+2. Install dependencies and start the project:
 - npm install  
 - npm start  
 
