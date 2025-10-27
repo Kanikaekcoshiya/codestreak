@@ -4,7 +4,6 @@ import "../App.css";
 function TaskHistory({ days }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Safely filter tasks (avoid null values)
   const filteredTasks = days.filter(
     (day) =>
       day &&

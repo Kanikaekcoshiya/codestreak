@@ -42,7 +42,6 @@ function App() {
 
     if (timeLeft === 0 && activeDay !== null) {
       if (!taskManuallyCompleted) {
-        // Show Timer End popup only if task not manually completed
         new Audio(failSound).play();
         Swal.fire("⏰ Time's up!", "You didn't finish your task in time!", "error");
       }
@@ -91,79 +90,102 @@ function App() {
     });
   };
 
-  // Complete Task with recommendation system and remove the box
+  // Complete Task
   const completeTask = (index) => {
-  const updatedDays = [...days];
+    const updatedDays = [...days];
 
-  // ✅ Mark as completed and store in localStorage
-  updatedDays[index] = {
-    ...updatedDays[index],
-    status: "completed",
-  };
-  setDays(updatedDays);
-  localStorage.setItem("days", JSON.stringify(updatedDays));
+    updatedDays[index] = {
+      ...updatedDays[index],
+      status: "completed",
+    };
+    setDays(updatedDays);
+    localStorage.setItem("days", JSON.stringify(updatedDays));
 
-  // ✅ Stop the timer when completed
-  setTimeLeft(0);
+    setTimeLeft(0);
+    setActiveDay(null);
 
-  // ✅ Close the TaskDetails box
-  setActiveDay(null);
+    new Audio(successSound).play();
+    Swal.fire({
+      icon: "success",
+      title: "🎉 Great job!",
+      text: `You completed "${updatedDays[index].task}"!`,
+      confirmButtonText: "Yay!",
+    }).then(() => {
+      const currentTopic = updatedDays[index].task.toLowerCase().trim();
+      const nextTopics = dsaGraph[currentTopic];
 
-  // ✅ Success sound + popup
-  new Audio(successSound).play();
-  Swal.fire({
-    icon: "success",
-    title: "🎉 Great job!",
-    text: `You completed "${updatedDays[index].task}"!`,
-    confirmButtonText: "Yay!",
-  }).then(() => {
-    // Recommendation logic
-    const currentTopic = updatedDays[index].task.toLowerCase();
-    const nextTopics = dsaGraph[currentTopic];
+      if (nextTopics && nextTopics.length > 0) {
+        const recommendedTopic =
+          nextTopics[Math.floor(Math.random() * nextTopics.length)];
 
-    if (nextTopics && nextTopics.length > 0) {
-      const recommendedTopic =
-        nextTopics[Math.floor(Math.random() * nextTopics.length)];
+        Swal.fire({
+          title: `Your next recommended topic is: ${recommendedTopic}`,
+          html: `
+            <p>Your next recommended topic is <b>${recommendedTopic}</b></p>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+              <button id="easy-btn" class="swal2-confirm swal2-styled">Easy</button>
+              <button id="medium-btn" class="swal2-confirm swal2-styled">Medium</button>
+              <button id="hard-btn" class="swal2-confirm swal2-styled">Hard</button>
+            </div>
+            <br/>
+            <button id="close-btn" class="swal2-cancel swal2-styled">Close</button>
+          `,
+          showConfirmButton: false,
+          didOpen: () => {
+            const normalizedTopic = recommendedTopic.toLowerCase().trim();
+            const topicMap = {
+              array: "arrays",
+              string: "strings",
+              graph: "graphs",
+              tree: "trees",
+              "linked list": "linked list",
+              stack: "stack",
+              queue: "queue",
+              dp: "dp",
+              recursion: "recursion",
+              maths: "maths",
+              "bit manipulation": "bit manipulation",
+            };
 
-      Swal.fire({
-        title: `Your next recommended topic is: ${recommendedTopic}`,
-        html: `
-          <p>Your next recommended topic is <b>${recommendedTopic}</b></p>
-          <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
-            <button id="easy-btn" class="swal2-confirm swal2-styled">Easy</button>
-            <button id="medium-btn" class="swal2-confirm swal2-styled">Medium</button>
-            <button id="hard-btn" class="swal2-confirm swal2-styled">Hard</button>
-          </div>
-          <br/>
-          <button id="close-btn" class="swal2-cancel swal2-styled">Close</button>
-        `,
-        showConfirmButton: false,
-        didOpen: () => {
-          document.getElementById("easy-btn").addEventListener("click", () => {
-            window.open(practiceLinks[recommendedTopic]?.easy, "_blank");
-          });
-          document.getElementById("medium-btn").addEventListener("click", () => {
-            window.open(practiceLinks[recommendedTopic]?.medium, "_blank");
-          });
-          document.getElementById("hard-btn").addEventListener("click", () => {
-            window.open(practiceLinks[recommendedTopic]?.hard, "_blank");
-          });
-          document.getElementById("close-btn").addEventListener("click", () => {
-            Swal.close();
-          });
-        },
-      });
-    }
-  });
-};
+            const linkKey =
+              topicMap[normalizedTopic.replace(/\s+/g, " ")] || normalizedTopic;
+
+            const openLink = (difficulty) => {
+              const link = practiceLinks[linkKey]?.[difficulty];
+              if (link) window.open(link, "_blank");
+              else
+                Swal.fire(
+                  "⚠️ Link not found!",
+                  "No LeetCode page for this topic yet.",
+                  "warning"
+                );
+            };
+
+            document
+              .getElementById("easy-btn")
+              .addEventListener("click", () => openLink("easy"));
+            document
+              .getElementById("medium-btn")
+              .addEventListener("click", () => openLink("medium"));
+            document
+              .getElementById("hard-btn")
+              .addEventListener("click", () => openLink("hard"));
+
+            document
+              .getElementById("close-btn")
+              .addEventListener("click", () => Swal.close());
+          },
+        });
+      }
+    });
+  }; 
 
   // Pause Task
   const pauseTask = (index) => {
     if (index === activeDay) {
       if (days[index].paused) {
-        setTimeLeft(days[index].timeLeft); // Resume
+        setTimeLeft(days[index].timeLeft);
       } else {
-        // Pause: Save current timeLeft
         const updatedDays = [...days];
         updatedDays[index].timeLeft = timeLeft;
         setDays(updatedDays);
@@ -256,13 +278,20 @@ function App() {
                   restartChallenge={restartChallenge}
                   extendChallenge={extendChallenge}
                 />
-                <h2>👋 Hello {name}, Your Goal: {goal}</h2>
-                
-                {/* Color coding legend */}
+                <h2>
+                  👋 Hello {name}, Your Goal: {goal}
+                </h2>
+
                 <div className="legend">
-                  <span className="legend-item"><span className="legend-box completed"></span> Completed</span>
-                  <span className="legend-item"><span className="legend-box scheduled"></span> Scheduled</span>
-                  <span className="legend-item"><span className="legend-box upcoming"></span> Upcoming</span>
+                  <span className="legend-item">
+                    <span className="legend-box completed"></span> Completed
+                  </span>
+                  <span className="legend-item">
+                    <span className="legend-box scheduled"></span> Scheduled
+                  </span>
+                  <span className="legend-item">
+                    <span className="legend-box upcoming"></span> Upcoming
+                  </span>
                 </div>
 
                 <ProgressStats
